@@ -1,5 +1,6 @@
 package Data;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,6 +11,7 @@ import java.util.List;
 import Models.ProductList;
 import Models.Store;
 
+@Dao
 public interface ProductListDAO {
 
     @Insert
@@ -25,5 +27,5 @@ public interface ProductListDAO {
     public List<ProductList> getAllProduct();
 
     @Query("select * from product_list where product_id ==:product_id")
-    public  Store getStore(long product_id);
+    public  ProductList getProduct(long product_id);
 }

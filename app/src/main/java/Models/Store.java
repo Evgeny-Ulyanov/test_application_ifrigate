@@ -13,9 +13,9 @@ public class Store {
     private long id;
 
     @ColumnInfo(name = "store_name")
-    private String name;
+    public String name;
 
-    private String address;
+    public String address;
 
     @Ignore
     public Store() {
