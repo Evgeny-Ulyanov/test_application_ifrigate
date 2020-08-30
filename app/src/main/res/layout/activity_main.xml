@@ -10,7 +10,36 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/conteiner"
+        android:layout_marginBottom="0dp"
         android:padding="4dp"
-        android:background="@android:color/darker_gray"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical" />
+
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/conteiner"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_weight="1"
+            android:textSize="10sp"
+            android:onClick="addStore"
+            android:text="Добавить торговую точку"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_weight="1"
+            android:textSize="10sp"
+            android:text="Список товаров"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
 </RelativeLayout>

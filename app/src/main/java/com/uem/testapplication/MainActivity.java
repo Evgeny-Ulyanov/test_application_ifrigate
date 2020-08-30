@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -34,52 +35,43 @@ public class MainActivity extends AppCompatActivity {
                 ModelsAppDatabase.class, "database")
                 .allowMainThreadQueries().build();
 
-        StoreDAO storeDAO = modelsAppDatabase.getStoreDAO();
-        Store store = new Store();
-        store.address = "Новочеркасск";
-        store.name = "Магазин";
-        Store store1 = new Store();
-        store1.address = "Достоевского 89ж";
-        store1.name = "Ларек";
-        Store store3 = new Store();
-        store3.address = "Новочеркасск";
-        store3.name = "Магазин";
-        Store store4 = new Store();
-        store4.address = "Достоевского 89ж";
-        store4.name = "Ларек";
-        Store store5 = new Store();
-        store5.address = "Новочеркасск";
-        store5.name = "Магазин";
-        Store store6 = new Store();
-        store6.address = "Достоевского 89ж";
-        store6.name = "Ларек";
-        Store store7 = new Store();
-        store7.address = "Новочеркасск";
-        store7.name = "Магазин";
-        Store store8 = new Store();
-        store8.address = "Достоевского 89ж";
-        store8.name = "Ларек";
-        storeDAO.addStore(store);
-        storeArrayList.add(store);
-        storeDAO.addStore(store1);
-        storeArrayList.add(store1);
-        storeDAO.addStore(store3);
-        storeArrayList.add(store3);
-        storeDAO.addStore(store4);
-        storeArrayList.add(store4);
-        storeDAO.addStore(store5);
-        storeArrayList.add(store5);
-        storeDAO.addStore(store6);
-        storeArrayList.add(store6);
-        storeDAO.addStore(store7);
-        storeArrayList.add(store7);
-        storeDAO.addStore(store8);
-        storeArrayList.add(store8);
+        storeArrayList.addAll(modelsAppDatabase.getStoreDAO().getAllStore());
 
 
         adapter = new StoreAdapter(storeArrayList);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
+    }
+
+    private void createStore(String name, String address) {
+        long id = modelsAppDatabase.getStoreDAO().addStore(new Store(0, name, address));
+
+        Store store = modelsAppDatabase.getStoreDAO().getStore(id);
+
+        storeArrayList.add(0, store);
+        adapter.notifyDataSetChanged();
+    }
+
+    public void addStore(View view) {
+        deleteStore( storeArrayList.get(0), 0);
+    }
+
+    private void deleteStore(Store store, int position) {
+        storeArrayList.remove(position);
+        modelsAppDatabase.getStoreDAO().deleteStore(store);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void updateStore(String name, String address, int position) {
+        Store store = storeArrayList.get(position);
+        store.setName(name);
+        store.setAddress(address);
+
+        modelsAppDatabase.getStoreDAO().updateStore(store);
+
+        storeArrayList.set(position, store);
+
+        adapter.notifyDataSetChanged();
     }
 }
