@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".ProductListActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/recyclerViewProduct"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/conteiner"
@@ -27,16 +27,16 @@
         <Button
             android:layout_weight="1"
             android:textSize="10sp"
-            android:onClick="addStore"
-            android:text="@string/add_point"
+            android:onClick="addProduct"
+            android:text="@string/add_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <Button
             android:layout_weight="1"
             android:textSize="10sp"
-            android:onClick="activityProductList"
-            android:text="@string/list_product_button"
+            android:onClick="activityMain"
+            android:text="@string/list_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

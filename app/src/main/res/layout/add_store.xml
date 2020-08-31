@@ -8,7 +8,7 @@
     <TextView
         android:id="@+id/newStoreTitle"
         android:textSize="20sp"
-        android:text="Новая торговая точка"
+        android:text="@string/new_point"
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
@@ -16,7 +16,7 @@
     <EditText
         android:id="@+id/newStoreName"
         android:layout_marginTop="24dp"
-        android:hint="Название"
+        android:hint="@string/name_point"
         android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -24,7 +24,7 @@
     <EditText
         android:id="@+id/newStoreAddress"
         android:layout_marginTop="24dp"
-        android:hint="Адрес"
+        android:hint="@string/address_point"
         android:textSize="24sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="4dp">
+
+        <TextView
+            android:id="@+id/textNameProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Text Name"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textCostProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textNameProduct"
+            android:text="Text Cost"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/textProductUnits"
+            android:layout_marginLeft="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textNameProduct"
+            android:text="Text Units"
+            android:layout_toEndOf="@id/textCostProduct"
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:textStyle="italic" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+

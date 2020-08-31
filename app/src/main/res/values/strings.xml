@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Test Application</string>
+    <string name="new_point">Новая торговая точка</string>
+    <string name="name_point">Название</string>
+    <string name="address_point">Адрес</string>
+    <string name="new_product">Новый товар</string>
+    <string name="name_product">Название</string>
+    <string name="price_product">Стоимость</string>
+    <string name="units_product">Единицы измерения</string>
+    <string name="add_product">Добавить товар</string>
+    <string name="list_product">Список торговых точек</string>
+    <string name="add_point">Добавить торговую точку</string>
+    <string name="list_product_button">Список товаров</string>
 </resources>

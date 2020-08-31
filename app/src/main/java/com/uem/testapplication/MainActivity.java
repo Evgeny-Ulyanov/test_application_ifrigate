@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setTitle("Торговые точки");
 
-        textStoreTitle = findViewById(R.id.newStoreAddress);
+        textStoreTitle = findViewById(R.id.newStoreTitle);
         newStoreName = findViewById(R.id.newStoreName);
         newStoreAddress = findViewById(R.id.newStoreAddress);
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         modelsAppDatabase = Room.databaseBuilder(getApplicationContext(),
                 ModelsAppDatabase.class, "database")
-                .allowMainThreadQueries().build();
+                .allowMainThreadQueries().fallbackToDestructiveMigration().build();
 
         storeArrayList.addAll(modelsAppDatabase.getStoreDAO().getAllStore());
 
@@ -124,4 +125,9 @@ public class MainActivity extends AppCompatActivity {
 
         adapter.notifyDataSetChanged();
     }
+
+    public void activityProductList(View view) {
+        startActivity(new Intent(MainActivity.this, ProductListActivity.class));
+    }
+
 }
