@@ -5,10 +5,10 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity (tableName = "store")
+@Entity (tableName = "store") // аннотация таблицы
 public class Store {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = true) // первичный ключ
     @ColumnInfo(name = "store_id")
     private long id;
 

@@ -11,4 +11,5 @@
     <string name="list_product">Список торговых точек</string>
     <string name="add_point">Добавить торговую точку</string>
     <string name="list_product_button">Список товаров</string>
+    <string name="add_order">Сделать заказ</string>
 </resources>

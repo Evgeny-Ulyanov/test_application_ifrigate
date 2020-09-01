@@ -48,17 +48,20 @@ public class MainActivity extends AppCompatActivity {
         modelsAppDatabase = Room.databaseBuilder(getApplicationContext(),
                 ModelsAppDatabase.class, "database")
                 .allowMainThreadQueries().fallbackToDestructiveMigration().build();
+        // выставлены заглушки .allowMainThreadQueries().fallbackToDestructiveMigration()
+        //необходимо использовать AsyncTask и описать миграцию базы данных
 
-        storeArrayList.addAll(modelsAppDatabase.getStoreDAO().getAllStore());
+        storeArrayList.addAll(modelsAppDatabase.getStoreDAO().getAllStore()); // получение всех записей из бд
 
 
-        adapter = new StoreAdapter(storeArrayList);
+        adapter = new StoreAdapter(storeArrayList, this);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
+        //описание RecyclerView
     }
 
-    public void addStore(View view) {
+    public void addStore(View view) { // создание диалогового окна для добавления записи в бд
 
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View addStore = layoutInflater.inflate(R.layout.add_store, null);
@@ -72,34 +75,34 @@ public class MainActivity extends AppCompatActivity {
 
         mDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("OK",
+                .setPositiveButton("OK", //кнопка ОК
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
-                                if (userInputName.getText().toString().isEmpty()){
+                                if (userInputName.getText().toString().isEmpty()){ // защита от записи пустых полей
                                     Toast.makeText(MainActivity.this, "Введите название", Toast.LENGTH_LONG).show();
                                     return;
                                 }
-                                if (userInputAddress.getText().toString().isEmpty()) {
+                                if (userInputAddress.getText().toString().isEmpty()) { // защита от записи пустых полей
                                     Toast.makeText(MainActivity.this, "Введите адрес", Toast.LENGTH_LONG).show();
                                     return;
                                 }
                                     createStore(userInputName.getText().toString(), userInputAddress.getText().toString());
                             }
                         })
-                .setNegativeButton("Отмена",
+                .setNegativeButton("Отмена", // кнопка ОТМЕНА
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,int id) {
                                 dialog.cancel();
                             }
                         });
 
-        AlertDialog alertDialog = mDialogBuilder.create();
+        AlertDialog alertDialog = mDialogBuilder.create(); // создание AlertDialog
 
-        alertDialog.show();
+        alertDialog.show(); // показать AlertDialog
 
     }
 
-    private void createStore(String name, String address) {
+    private void createStore(String name, String address) { // создание торговой точки
         long id = modelsAppDatabase.getStoreDAO().addStore(new Store(0, name, address));
 
         Store store = modelsAppDatabase.getStoreDAO().getStore(id);
@@ -108,13 +111,13 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private void deleteStore(Store store, int position) {
+    private void deleteStore(Store store, int position) { //удаление торговой точки
         storeArrayList.remove(position);
         modelsAppDatabase.getStoreDAO().deleteStore(store);
         adapter.notifyDataSetChanged();
     }
 
-    private void updateStore(String name, String address, int position) {
+    private void updateStore(String name, String address, int position) { // обновление записи в бд
         Store store = storeArrayList.get(position);
         store.setName(name);
         store.setAddress(address);
@@ -126,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    public void activityProductList(View view) {
+    public void activityProductList(View view) { //onClick переход в активити списка товаров
         startActivity(new Intent(MainActivity.this, ProductListActivity.class));
     }
 

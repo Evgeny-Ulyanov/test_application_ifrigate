@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".InfoActivity">
+
+    <TextView
+        android:id="@+id/textViewNameInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textStyle="bold"
+        android:text="" />
+
+    <TextView
+        android:id="@+id/textViewAddressInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:text="" />
+
+    <Button
+        android:layout_marginTop="8dp"
+        android:id="@+id/buttonAddOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="addOrder"
+        android:text="@string/add_order" />
+</LinearLayout>

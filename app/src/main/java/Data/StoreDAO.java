@@ -11,21 +11,21 @@ import java.util.List;
 
 import Models.Store;
 
-@Dao
+@Dao // описываются методы работы с бд
 public interface StoreDAO {
 
-    @Insert
+    @Insert // вставка
     public long addStore(Store store);
 
-    @Update
+    @Update // обновление
     public void updateStore(Store store);
 
-    @Delete
+    @Delete // удаление
     public void deleteStore(Store store);
 
-    @Query("select * from store")
+    @Query("select * from store") // запрос ко всем
     public List<Store> getAllStore();
 
-    @Query("select * from store where store_id ==:store_id")
+    @Query("select * from store where store_id ==:store_id") // запрос к одному
     public  Store getStore(long store_id);
 }
